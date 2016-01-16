@@ -1,3 +1,4 @@
+<%@ page import="us.cyzic.jsp.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,20 +12,7 @@
 
 	<%
 		//set the default language
-		String favLang = "Java";
-
-		//get the cookies from the browser request
-		Cookie[] cookies = request.getCookies();
-
-		//find our favorite language cookie
-		if (cookies != null) {
-			for (Cookie cookie : cookies) {
-				if (cookie.getName().equals("myApp.favoriteLanguage")) {
-					favLang = cookie.getValue();
-					break;
-				}
-			}
-		}
+		String favLang = FunUtils.getFavoriteLanguageFromCookies(request.getCookies());
 	%>
 
 	<!-- now show personalized content based on favLang variable -->
